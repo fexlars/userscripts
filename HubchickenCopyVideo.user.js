@@ -5,12 +5,16 @@
 // @grant       none
 // @version     1.0
 // @author      Fexlar
-// @description Adds a copy button to hubchicken to make sharing videos much easier
+// @description 8/27/2023, 1:37:30 AM
 // ==/UserScript==
 
-const newButton = document.createElement('button');
+// Step 1: Create a new button element
+const newButton = document.createElement('input');
 
-newButton.textContent = 'Copy Video';
+// Step 2: Set attributes for the button
+newButton.id = "video-button"
+newButton.type = "button"
+newButton.value = 'Copy Video';
 newButton.addEventListener('click', () => {
     const video = document.getElementById('video-source');
     navigator.clipboard.writeText(video.src).then(() => {
@@ -20,6 +24,8 @@ newButton.addEventListener('click', () => {
     });
 });
 
+// Step 3: Find the div element with the ID 'main'
 const mainDiv = document.getElementById('main');
 
+// Step 4: Append the new button to the div element
 mainDiv.appendChild(newButton);
